@@ -1,0 +1,301 @@
+/* --- Variables de couleurs (Thème L'arc) --- */
+:root {
+    --primary: #a5c39c;    /* Vert doux */
+    --accent: #daae9e;     /* Rose terreux / Beige */
+    --dark: #2c3e50;       /* Bleu nuit pour le texte */
+    --light: #f9f9f9;      /* Fond de page */
+    --white: #ffffff;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Reset & Base --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+/* --- Navigation --- */
+.main-nav {
+    background: var(--white);
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#iddedelogo img {
+    width: 130px;
+    height: auto;
+    display: block;
+}
+
+#yes button {
+    background: var(--dark);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#yes button:hover {
+    background: var(--accent);
+    transform: scale(1.05);
+}
+
+/* --- Barre de Filtres (Automatique) --- */
+.search-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px 5%;
+    max-width: 1200px;
+    margin: auto;
+    justify-content: center;
+    background: var(--white);
+    margin-top: 10px;
+    border-radius: 12px;
+}
+
+.search-filters select, 
+.search-filters input {
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 2px solid #eee;
+    outline: none;
+    font-size: 0.95rem;
+    min-width: 180px;
+    transition: border-color 0.3s;
+}
+
+.search-filters select:focus, 
+.search-filters input:focus {
+    border-color: var(--accent);
+}
+
+.price-range {
+    display: flex;
+    gap: 8px;
+}
+
+/* --- Slider --- */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    margin-top: 2px;
+}
+
+.slider {
+    padding-top: 8px;
+    display: flex;
+    height: 100%;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.3);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 50%;
+    margin: 0 10px;
+    backdrop-filter: blur(5px);
+}
+
+.next { right: 0; }
+
+/* --- Grille des Voitures --- */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    padding: 30px 5%;
+    max-width: 1300px;
+    margin: auto;
+}
+
+.product-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.product-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: var(--dark);
+}
+
+.product-card p {
+    color: #7f8c8d;
+    margin-bottom: 15px;
+}
+
+.price-val {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #d35400; /* Orange pour le prix */
+}
+
+.btn-add {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.btn-add:hover {
+    background: var(--primary);
+}
+
+/* --- Modal Réservation --- */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    padding: 15px;
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-content h3 { margin-bottom: 15px; }
+
+.modal-content input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fcfcfc;
+}
+
+#price-box {
+    background: #fff9f4;
+    padding: 15px;
+    border: 1px dashed var(--accent);
+    border-radius: 12px;
+    margin: 15px 0;
+}
+
+/* --- Zoom Image --- */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 4000;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+#img-full {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+.close-zoom {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+/* --- Responsive (Mobile) --- */
+@media (max-width: 768px) {
+    .main-nav { padding: 10px 15px; }
+    #iddedelogo img { width: 110px; }
+    
+    .slider-container { height: 220px; }
+    
+    .search-filters { 
+        padding: 15px; 
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .search-filters select, .price-range { width: 100%; }
+    .price-range input { flex: 1; }
+
+    .products-grid {
+        grid-template-columns: 1fr 1fr; /* 2 voitures par ligne sur mobile */
+        gap: 12px;
+        padding: 15px;
+    }
+    
+    .product-card { padding: 12px; border-radius: 15px; }
+    .product-card img { height: 110px; }
+    .product-card h4 { font-size: 0.95rem; }
+    .btn-add { font-size: 0.85rem; padding: 10px; }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>L'arc Location de Voitures</title>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="logo"><div id="iddedelogo"><img src="https://res.cloudinary.com/dwi2j4pju/image/upload/v1771087974/kjmhmq4i9xhcjtfly0pm.png"></div></div>
+        <div id="yes"><button><a href="#" style="color: white; text-decoration: none;"> CONTACT </a></button></div>
+    </nav>
+
+    <div class="slider-container">
+        <div class="slider" id="main-slider">
+            <div class="slide"><img src="https://res.cloudinary.com/dwi2j4pju/image/upload/v1771087805/womld4qcd8wjdnodfzmd.png"></div>
+            <div class="slide"><img src="https://res.cloudinary.com/dwi2j4pju/image/upload/v1771087807/ztorx7x0uj6xlubuyrmt.png"></div>
+            <div class="slide"><img src="https://res.cloudinary.com/dwi2j4pju/image/upload/v1771087640/mf3mqjv7c53sewtfrqwf.png"></div>
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <div class="search-filters">
+        <select id="typeFilter" onchange="filterProducts()"><option value="all">Toutes les marques</option></select>
+        <div class="price-range">
+            <input type="number" id="minPrice" placeholder="Min" oninput="filterProducts()">
+            <input type="number" id="maxPrice" placeholder="Max" oninput="filterProducts()">
+        </div>
+    </div>
+
+    <main id="product-list" class="products-grid"></main>
+
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <h3 id="selected-car-title"></h3>
+            <input type="text" id="user-firstname" placeholder="Prénom">
+            <input type="text" id="user-lastname" placeholder="Nom">
+            <input type="text" id="user-cin" placeholder="CIN (8 chiffres)" maxlength="8">
+            <input type="tel" id="user-phone" placeholder="Téléphone">
+            
+            <div id="options-container" style="margin: 10px 0; background: #f9f9f9; padding: 10px; border-radius: 8px;"></div>
+
+            <label>Nombre de jours :</label>
+            <input type="number" id="rent-days" value="1" min="1" oninput="calculateTotal()">
+
+            <div id="price-box" style="background:#fff3cd; padding:10px; border-radius:8px; margin:10px 0;">
+                <p>Prix/Jour: <span id="unit-price">0</span> DT</p>
+                <h4>Total: <span id="reservation-total">0</span> DT</h4>
+            </div>
+            
+            <button onclick="confirmOrder()" class="btn-add">Confirmer</button>
+            <button onclick="closeOrderModal()" style="background:#ccc; border:none; padding:10px; width:100%; border-radius:8px; margin-top:5px; cursor:pointer;">Annuler</button>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="firebase-setup.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
